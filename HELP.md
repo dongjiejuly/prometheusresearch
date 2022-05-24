@@ -193,4 +193,6 @@ management.metrics.export.prometheus.enabled=true
 ![avatar](src/main/resources/static/9.png)
 ![avatar](src/main/resources/static/10.png)
   
+#### 10、参考地址 https://blog.csdn.net/ycf921244819/article/details/124665695
+  
 ### 总结：到此，整个监控系统的搭建基本完成，所有对springboot项目接口的调用都可以通过Prometheus搜集反馈到Grafana的图形界面中来
