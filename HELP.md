@@ -6,7 +6,7 @@
 
 ### 步骤
 #### 1、导入prometheus对应的jar包
-```
+```xml
         <dependency>
             <groupId>io.micrometer</groupId>
             <artifactId>micrometer-registry-prometheus</artifactId>
@@ -15,7 +15,7 @@
 ```
 
 #### 2、导入actuator对应的jar包
-```
+```xml
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
@@ -23,7 +23,7 @@
 ```
 
 #### 3、编写切面代码，实现自定义监控指标
-```
+```java
 package com.yanzige.prometheusresearch.aspect;
 
 import io.micrometer.core.instrument.Metrics;
@@ -95,7 +95,7 @@ public class PrometheusMetricsAspect {
 }
 ```
 #### 4、编写入口类Controller测试代码
-```
+```java
 package com.yanzige.prometheusresearch.controller;
 
 import lombok.extern.slf4j.Slf4j;
@@ -130,7 +130,7 @@ public class TestController {
 }
 ```
 #### 5、编辑application.properties配置信息
-```
+```properties
 server.port=8081
 
 spring.application.name=prometheusresearch
@@ -155,7 +155,7 @@ management.metrics.export.prometheus.enabled=true
 * 将下载的.tar.gz包放到某个目录下，然后进入Prometheus目录，启动命令 ./prometheus，后台启动 ./prometheus &
 * 访问 http://localhost:9090 
 * 修改Prometheus目录下的配置文件 vim prometheus.yml
-```
+```yaml
   # 新增配置，将springboot项目添加到监控中
   - job_name: "prometheusresearch"
 
@@ -181,13 +181,12 @@ management.metrics.export.prometheus.enabled=true
 * 在图表中添加panel
 ![avatar](src/main/resources/static/7.png)
 * 配置需要监控数据和图表
-```
-1、输入PromQL查询语句
-2、设置监控的参数
-3、设置展示的图表
-4、设置panel的名字和对应的描述
-5、最后注意右上角save保存
-```
+    - 输入PromQL查询语句
+    - 设置监控的参数
+    - 设置展示的图表
+    - 设置panel的名字和对应的描述
+    - 最后注意右上角save保存
+
 ![avatar](src/main/resources/static/8.png)
 * 最后就可以在自己的dashboard面板中看到对应的监控图表
 ![avatar](src/main/resources/static/9.png)
